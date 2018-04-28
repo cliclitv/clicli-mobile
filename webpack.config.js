@@ -12,6 +12,7 @@ module.exports = {
     filename: 'js/[name].js'
   },
   resolve: {
+    extensions: [' ', '.js', '.json', '.vue', '.css'],
     alias: {
       component: path.resolve(__dirname, 'src/component'),
       common: path.resolve(__dirname, 'src/common'),
