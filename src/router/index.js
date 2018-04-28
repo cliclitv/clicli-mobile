@@ -6,7 +6,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: 'App'
+      component: App
     }
   ]
 })
