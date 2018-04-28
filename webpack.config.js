@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 const {VueLoaderPlugin} = require('vue-loader')
-console.log(process.env.NODE_ENV)
 
 module.exports = {
   mode: 'production',
