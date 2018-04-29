@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import App from '../app.vue'
+
+import Home from 'component/home/home'
 
 Vue.use(Router)
 
@@ -8,11 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/idanmu',
-      component: App,
+      component: Home,
       children: [
         {
-          path: ':id',
-          component: App
+          path: '/home',
+          component: Home
         }
       ]
     }

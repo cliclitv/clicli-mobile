@@ -1,7 +1,7 @@
 <template>
   <div class="b-nav">
     <ul>
-      <router-link to="/idanmu"><i class="iconfont icon-home"></i>
+      <router-link to="/idanmu/home"><i class="iconfont icon-home"></i>
         <li>首页</li>
       </router-link>
       <router-link to="/idanmu/sort"><i class="iconfont icon-other"></i>
@@ -11,7 +11,7 @@
         <li>作者</li>
       </router-link>
       <router-link to="/idanmu/user"><i class="iconfont icon-user"></i>
-        <li>用户</li>
+        <li>我</li>
       </router-link>
 
     </ul>
@@ -39,7 +39,7 @@
 
   .b-nav a {
     flex: 1;
-    padding: 15px;
+    padding: 12px;
     text-align: center;
   }
 
