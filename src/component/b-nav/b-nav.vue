@@ -10,7 +10,7 @@
       <router-link to="/idanmu/author"><i class="iconfont icon-author"></i>
         <li>作者</li>
       </router-link>
-      <router-link to="/idanmu/user"><i class="iconfont icon-user"></i>
+      <router-link to="/idanmu/me"><i class="iconfont icon-user"></i>
         <li>我</li>
       </router-link>
 

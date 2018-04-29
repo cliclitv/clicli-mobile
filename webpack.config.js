@@ -18,6 +18,7 @@ module.exports = {
       common: path.resolve(__dirname, 'src/common'),
       api: path.resolve(__dirname, 'src/api'),
       base: path.resolve(__dirname, 'src/base'),
+      main: path.resolve(__dirname, 'src/main'),
       store: path.resolve(__dirname, 'src/store'),
       hoc: path.resolve(__dirname, 'src/hoc')
     }
