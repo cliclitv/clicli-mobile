@@ -1,10 +1,10 @@
 <template>
   <div class="tab">
-    <ul>
-      <router-link to="/idanmu">
+    <ul :style="style">
+      <router-link to="/idanmu" @click.native="changeBg('#ff677d')">
         <li>后庭花</li>
       </router-link>
-      <router-link to="/uraban">
+      <router-link to="/uraban" @click.native="changeBg('#48a1ff')">
         <li class="uraban">里世界</li>
       </router-link>
     </ul>
@@ -13,17 +13,33 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    data() {
+      return {
+        style: {
+          background: '#ff677d',
+        }
+      }
+    },
+    methods: {
+      changeBg(bg) {
+        this.style = {background: bg}
+      }
+    }
+  }
 </script>
 
 <style scoped>
   .tab {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
   }
 
   .tab ul {
     display: flex;
     justify-content: center;
-    background: #ff677d;
     font-size: 13px;
   }
 
@@ -43,12 +59,12 @@
     border-bottom: 2px solid #fff;
   }
 
-  .uraban.router-link-exact-active li{
+  .uraban.router-link-exact-active li {
     border-bottom: 2px solid #fff;
   }
 
-  .uraban.router-link-active li{
-    border-bottom:none;
+  .uraban.router-link-active li {
+    border-bottom: none;
   }
 
 

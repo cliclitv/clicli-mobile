@@ -32,6 +32,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "better-scroll": "^1.10.2",
+    "blueimp-md5": "^2.10.0",
+    "marked": "^0.3.19",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   }

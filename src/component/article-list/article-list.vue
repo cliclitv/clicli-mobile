@@ -1,8 +1,18 @@
 <template>
   <div class="article-list">
     <ul>
-      <li>
-        hello
+      <li v-for="item in article">
+        <div class="suo">
+          <img :src="getSuo(item.content)" alt="">
+        </div>
+        <div class="content">
+          <h2>{{item.title}}</h2>
+          <div class="bio">
+            <img :src="getAvatar(item.author.qq)" alt="">
+            <p>{{item.author.name}}</p>
+          </div>
+        </div>
+
       </li>
     </ul>
 
@@ -11,9 +21,72 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: ['article'],
+    mounted() {
+
+    },
+    methods: {
+      getSuo(content) {
+        return content.match(/suo(.+?)(gif|png|jpg|jpeg)/i)[0].slice(5)
+      },
+      getAvatar(qq) {
+        return `http://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
+      },
+    }
+  }
 </script>
 
 <style scoped>
+  .article-list {
+    position: absolute;
+    top: 53px;
+    bottom: 56px;
+    left: 0;
+    right: 0;
+
+  }
+
+  .article-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .article-list li:nth-of-type(odd){
+    background: #13151c;
+  }
+
+  .article-list .content {
+    flex: 1;
+  }
+
+  .content img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+  }
+
+  .bio {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  .bio p {
+    flex: 1;
+  }
+
+  .bio img {
+    margin-right: 10px;
+  }
+
+  .suo img {
+    height: 100px;
+    width: 120px;
+    margin-right: 10px;
+    object-fit: cover;
+  }
 
 </style>

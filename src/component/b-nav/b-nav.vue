@@ -39,7 +39,7 @@
 
   .b-nav a {
     flex: 1;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
   }
 

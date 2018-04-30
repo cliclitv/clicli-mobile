@@ -1,7 +1,10 @@
 <template>
   <div>
     <tab></tab>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+
   </div>
 </template>
 

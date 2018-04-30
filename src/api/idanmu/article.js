@@ -5,8 +5,13 @@ const request = axios.create({
 })
 
 // 获取所有文章
-export function articleList() {
-  return request.get('/article/article')
+export function articleList(page, pageSize) {
+  return request.get('/article/article', {
+    params: {
+      page: page,
+      pageSize: pageSize
+    }
+  })
 }
 
 // 根据作者获取文章

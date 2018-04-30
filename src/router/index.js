@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from 'main/idanmu/idanmu'
+import Idanmu from 'main/idanmu/idanmu'
 import ArticleList from 'component/article-list/article-list'
+import Home from 'component/home/home'
+import Uraban from 'main/uraban/uraban'
+import UrabanList from 'component/uraban-list/uraban-list'
+import UrabanHome from 'component/uraban-home/uraban-home'
 
 Vue.use(Router)
 
@@ -18,7 +22,7 @@ export default new Router({
     },
     {
       path: '/idanmu',
-      component: Home,
+      component: Idanmu,
       children: [
         {
           path: '/idanmu/home',
@@ -36,6 +40,16 @@ export default new Router({
           path: '/idanmu/me',
           component: ArticleList
         }
+      ]
+    },
+    {
+      path: '/uraban',
+      component: Uraban,
+      children: [
+        {
+          path: '/uraban',
+          component: UrabanHome
+        },
       ]
     }
   ]
