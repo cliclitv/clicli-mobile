@@ -40,7 +40,7 @@
   .tab ul {
     display: flex;
     justify-content: center;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .tab ul a {
@@ -48,7 +48,7 @@
   }
 
   .tab ul a li {
-    padding: 14px;
+    padding: 10px;
     flex: 1;
     text-align: center;
     color: #fff;
