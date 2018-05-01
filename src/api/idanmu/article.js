@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const request = axios.create({
+export const req = axios.create({
   baseURL: 'http://www.idanmu.cc'
 })
 
 // 获取所有文章
 export function articleList(page, pageSize) {
-  return request.get('/article/article', {
+  return req.get('/article/article', {
     params: {
       page: page,
       pageSize: pageSize
@@ -16,7 +16,7 @@ export function articleList(page, pageSize) {
 
 // 根据作者获取文章
 export function authorArticle(id) {
-  return request.get('/article/author', {
+  return req.get('/article/author', {
     params: {
       id: id
     }
@@ -26,7 +26,7 @@ export function authorArticle(id) {
 // 根据分类查找文章
 
 export function sortArticle(sort, page, pageSize) {
-  return request.get('/article/sort', {
+  return req.get('/article/sort', {
     params: {
       sort: sort,
       page: page,
@@ -37,7 +37,7 @@ export function sortArticle(sort, page, pageSize) {
 
 // 查找一篇文章
 export function getOneArticle(id) {
-  return request.get('/article/one', {
+  return req.get('/article/one', {
     params: {
       id: id
     }
@@ -47,17 +47,17 @@ export function getOneArticle(id) {
 // 撰写增加文章
 
 export function writeArticle(article) {
-  return request.post('/article/write', article)
+  return req.post('/article/write', article)
 }
 
 // 更新文章
 export function update(article) {
-  return request.post('/article/update', article)
+  return req.post('/article/update', article)
 }
 
 // 删除一篇文章
 export function deleteArticle(id) {
-  return request.delete('/article/delete', {
+  return req.delete('/article/delete', {
     params: {
       id: id
     }

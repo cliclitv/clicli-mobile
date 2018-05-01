@@ -31,7 +31,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'stage-1']
+            presets: ['env', 'stage-1'],
+            plugins: ['syntax-dynamic-import']
           }
         }
       },
@@ -79,7 +80,7 @@ module.exports = {
       template: './index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: 'css/[name].css'
     }),
     // new ExtractTextPlugin("css/[name].css"),
     new VueLoaderPlugin()

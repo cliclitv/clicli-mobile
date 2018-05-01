@@ -1,26 +1,32 @@
 <template>
-  <div class="article-list">
-    <ul>
-      <li v-for="item in article">
-        <div class="suo">
-          <img :src="getSuo(item.content)" alt="">
-        </div>
-        <div class="content">
-          <h2>{{item.title}}</h2>
-          <div class="bio">
-            <img :src="getAvatar(item.author.qq)" alt="">
-            <p>{{item.author.name}}</p>
+  <div>
+    <scroll class="article-list" :data="article">
+      <ul>
+        <li v-for="item in article" @click="selectItem(item)">
+          <div class="suo">
+            <img :src="getSuo(item.content)" alt="">
           </div>
-        </div>
+          <div class="content">
+            <h2>{{item.title}}</h2>
+            <div class="bio">
+              <img :src="getAvatar(item.author.qq)" alt="">
+              <p>{{item.author.name}}</p>
+            </div>
+          </div>
 
-      </li>
-    </ul>
+        </li>
+      </ul>
 
+    </scroll>
+    <router-view></router-view>
   </div>
+
 
 </template>
 
 <script>
+  import Scroll from 'base/scroll/scroll'
+
   export default {
     props: ['article'],
     mounted() {
@@ -33,14 +39,22 @@
       getAvatar(qq) {
         return `http://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
       },
+      selectItem(item) {
+        this.$router.push({
+          path: `/idanmu/home/${item._id}`
+        })
+      }
+    },
+    components: {
+      Scroll
     }
   }
 </script>
 
 <style scoped>
   .article-list {
-    position: absolute;
-    top: 53px;
+    position: fixed;
+    top: 51px;
     bottom: 56px;
     left: 0;
     right: 0;
@@ -54,7 +68,7 @@
     font-size: 14px;
   }
 
-  .article-list li:nth-of-type(odd){
+  .article-list li:nth-of-type(odd) {
     background: #13151c;
   }
 
@@ -66,6 +80,10 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
+  }
+
+  .content {
+    padding: 10px;
   }
 
   .bio {

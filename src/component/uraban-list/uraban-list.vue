@@ -1,37 +1,38 @@
 <template>
-  <div class="uraban-list">
-    <ul>
-      <li v-for="item in article">
-        <div class="bio">
-          <div class="avatar">
-            <img :src="getAvatar(item.author[0].mail)" alt="">
-            <p class="name">{{item.author[0].name}}</p>
+  <div>
+    <scroll class="uraban-list" :data="article">
+      <ul>
+        <li v-for="item in article" @click="selectItem(item)">
+          <div class="bio">
+            <div class="avatar">
+              <img :src="getAvatar(item.author[0].mail)" alt="">
+              <p class="name">{{item.author[0].name}}</p>
+            </div>
           </div>
-
-        </div>
-        <h2>{{item.title}}</h2>
-        <p class="text" v-html="getText(item.text)"></p>
-        <div class="bot">
+          <h2>{{item.title}}</h2>
+          <p class="text" v-html="getText(item.text)"></p>
+          <div class="bot">
            <span class="sort">
           {{item.categories[0].name}}
         </span>
-
-        </div>
-      </li>
-
-    </ul>
+          </div>
+        </li>
+      </ul>
+    </scroll>
     <div class="option">
       <i class="iconfont icon-circle"></i>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import md5 from 'blueimp-md5'
   import marked from 'marked'
+  import Scroll from 'base/scroll/scroll'
 
   export default {
-    props:['article'],
+    props: ['article'],
     methods: {
       getAvatar(avatar) {
         return 'http://avatar.tietuku.com/avatar/' + md5(avatar)
@@ -39,15 +40,28 @@
       getText(text) {
         const str = text.replace(/pic.51xiaoxin.com/g, "");
         const mark = marked(str, {breaks: true})
-        return mark.match(/(.*)more/s)[1].slice(4)
+        return mark.match(/([\s\S]*)more/)[1]
+
+      },
+      selectItem(item) {
+        this.$router.push({
+          path: `/uraban/home/${item.cid}`
+        })
       }
+    },
+    components: {
+      Scroll
     }
   }
 </script>
 
 <style>
   .uraban-list {
-    margin-top: 53px;
+    position: fixed;
+    top: 51px;
+    bottom: 20px;
+    left: 0;
+    right: 0;
   }
 
   .uraban-list li {
