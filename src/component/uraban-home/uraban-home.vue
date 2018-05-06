@@ -13,7 +13,7 @@
       return {
         article: [],
         page: 1,
-        pageSize: 10,
+        pageSize: 4,
         isShow: false
       }
     },
@@ -22,7 +22,7 @@
     },
     methods: {
       getUrabanArticle(flag) {
-        getAll().then(res => {
+        getAll(this.page, this.pageSize).then(res => {
           if (res.data.status === 200) {
             if (flag) {
               this.article = this.article.concat(res.data.data)

@@ -5,12 +5,17 @@ export const request = axios.create({
 })
 
 // 获取所有文章
-export function getAll() {
-  return request.get('/posts')
+export function getAll(page, pageSize) {
+  return request.get('/posts', {
+    params: {
+      page: page,
+      pageSize: pageSize
+    }
+  })
 }
 
 export function getOneArticle(id) {
-  return request.get('/post',{
+  return request.get('/post', {
     params: {
       cid: id
     }
