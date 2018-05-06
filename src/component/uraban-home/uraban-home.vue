@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <uraban-list :article="article"></uraban-list>
+    <uraban-list :article="article" @getMore="getMore"></uraban-list>
   </div>
 </template>
 
@@ -11,23 +11,34 @@
   export default {
     data() {
       return {
-        article: []
+        article: [],
+        page: 1,
+        pageSize: 10,
+        isShow: false
       }
     },
     created() {
-
       this.getUrabanArticle()
-
     },
     methods: {
-      getUrabanArticle() {
+      getUrabanArticle(flag) {
         getAll().then(res => {
           if (res.data.status === 200) {
-            this.article = res.data.data
+            if (flag) {
+              this.article = this.article.concat(res.data.data)
+              if (res.data.count === 0) {
+                this.isShow = false
+              }
+            } else {
+              this.article = res.data.data
+            }
           }
         })
       },
-
+      getMore() {
+        this.page++
+        this.getUrabanArticle(true)
+      }
     },
     components: {
       UrabanList

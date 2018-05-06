@@ -19,13 +19,27 @@
         type: Boolean,
         default: true
       },
+      scrollbar: {
+        type: Boolean,
+        default: false
+      },
       data: {
         type: Array | Object,
         default: null
+      },
+      pollup: {
+        type: Boolean,
+        default: false
       }
     },
     mounted() {
-      this._initScroll()
+      window.onload = () => {
+        this.refresh()
+
+      }
+      setTimeout(() => {
+        this._initScroll()
+      }, 20)
     },
     methods: {
       _initScroll() {
@@ -34,8 +48,16 @@
         }
         this.scroll = new BScroll(this.$refs.wrapper, {
           probeType: this.probeType,
-          click: this.click
+          click: this.click,
+          scrollbar: this.scrollbar
         })
+        if (this.pollup) {
+          this.scroll.on('scrollEnd', () => {
+            if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
+              this.$emit('scrollToEnd')
+            }
+          })
+        }
       },
       enable() {
         this.scroll && this.scroll.enable()
@@ -49,7 +71,9 @@
     },
     watch: {
       data() {
-        this.refresh()
+        setTimeout(() => {
+          this.refresh()
+        }, 20)
       }
     }
   }

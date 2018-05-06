@@ -56,7 +56,8 @@
         return `http://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
       },
       getText(content) {
-        return marked(content, {breaks: true})
+        const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
+        return marked(str, {breaks: true})
       },
     },
     components: {

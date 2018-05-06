@@ -51,6 +51,7 @@ npm manifest:
       "better-scroll": "^1.10.2",
       "blueimp-md5": "^2.10.0",
       "marked": "^0.3.19",
+      "vconsole": "^3.2.0",
       "vue": "^2.5.16",
       "vue-router": "^3.0.1"
     }
@@ -5981,6 +5982,10 @@ Lockfile:
   vary@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+  
+  vconsole@^3.2.0:
+    version "3.2.0"
+    resolved "https://registry.yarnpkg.com/vconsole/-/vconsole-3.2.0.tgz#960e2877d685a9543f5f30ec055a66a96ac15bb5"
   
   vendors@^1.0.0:
     version "1.0.2"

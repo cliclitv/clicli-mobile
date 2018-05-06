@@ -1,6 +1,6 @@
 <template>
   <div>
-    <scroll class="uraban-list" :data="article">
+    <scroll class="uraban-list" :data="article" :pollup="pollup" @scrollToEnd="getMore">
       <ul>
         <li v-for="item in article" @click="selectItem(item)">
           <div class="bio">
@@ -33,12 +33,17 @@
 
   export default {
     props: ['article'],
+    data(){
+      return{
+        pollup:true
+      }
+    },
     methods: {
       getAvatar(avatar) {
         return 'http://avatar.tietuku.com/avatar/' + md5(avatar)
       },
       getText(text) {
-        const str = text.replace(/pic.51xiaoxin.com/g, "");
+        const str = text.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
         const mark = marked(str, {breaks: true})
         return mark.match(/([\s\S]*)more/)[1]
 
@@ -47,6 +52,9 @@
         this.$router.push({
           path: `/uraban/home/${item.cid}`
         })
+      },
+      getMore(){
+        this.$emit('getMore')
       }
     },
     components: {

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <article-list :article="article"></article-list>
+    <article-list :article="article" @getMore="getMore"></article-list>
   </div>
 </template>
 
@@ -11,7 +11,10 @@
   export default {
     data() {
       return {
-        article: []
+        article: [],
+        page: 1,
+        pageSize: 10,
+        isShow: false
       }
     },
     created() {
@@ -20,15 +23,28 @@
 
     },
     methods: {
-      getIdanmuArticle() {
-        articleList(1, 10).then(res => {
+      getIdanmuArticle(flag) {
+        articleList(this.page, this.pageSize).then(res => {
+          this.isShow = true
           if (res.data.code === 0) {
-            this.article = res.data.result
+            if (flag) {
+              this.article = this.article.concat(res.data.result)
+              if (res.data.count === 0) {
+                this.isShow = false
+              }
+            } else {
+              this.article = res.data.result
+            }
+
           }
         })
       },
-
+      getMore() {
+        this.page++
+        this.getIdanmuArticle(true)
+      }
     },
+
     components: {
       ArticleList
     }
@@ -36,7 +52,7 @@
 </script>
 
 <style scoped>
-  .home{
+  .home {
     position: relative;
   }
 

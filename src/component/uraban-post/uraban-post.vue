@@ -57,7 +57,7 @@
         return 'http://avatar.tietuku.com/avatar/' + md5(avatar)
       },
       getText(text) {
-        const str = text.replace(/pic.51xiaoxin.com/g, "");
+        const str = text.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
         return marked(str, {breaks: true})
       },
     },

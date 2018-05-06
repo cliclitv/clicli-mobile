@@ -1,6 +1,6 @@
 <template>
   <div>
-    <scroll class="article-list" :data="article">
+    <scroll class="article-list" :data="article" :pollup="pollup" @scrollToEnd="getMore">
       <ul>
         <li v-for="item in article" @click="selectItem(item)">
           <div class="suo">
@@ -29,12 +29,15 @@
 
   export default {
     props: ['article'],
-    mounted() {
-
+    data(){
+      return{
+        pollup: true
+      }
     },
     methods: {
       getSuo(content) {
-        return content.match(/suo(.+?)(gif|png|jpg|jpeg)/i)[0].slice(5)
+        const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
+        return str.match(/suo(.+?)(gif|png|jpg|jpeg)/i)[0].slice(5)
       },
       getAvatar(qq) {
         return `http://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
@@ -43,6 +46,9 @@
         this.$router.push({
           path: `/idanmu/home/${item._id}`
         })
+      },
+      getMore(){
+        this.$emit('getMore')
       }
     },
     components: {
