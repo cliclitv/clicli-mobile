@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <article-list :article="article" @getMore="getMore"></article-list>
+    <article-list :article="article" @getMore="getMore" @refresh="refresh"></article-list>
   </div>
 </template>
 
@@ -42,6 +42,10 @@
       getMore() {
         this.page++
         this.getIdanmuArticle(true)
+      },
+      refresh() {
+        this.page = 1
+        this.getIdanmuArticle(false)
       }
     },
 

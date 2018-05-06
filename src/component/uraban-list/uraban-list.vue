@@ -46,7 +46,6 @@
         const str = text.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
         let mark = marked(str, {breaks: true})
         let result = mark.match(/([\s\S]*)more/)[1]
-        console.log(result)
         if (result) {
           return result
         } else {

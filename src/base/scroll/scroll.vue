@@ -30,6 +30,10 @@
       pollup: {
         type: Boolean,
         default: false
+      },
+      pollDown: {
+        type: Boolean,
+        default: false
       }
     },
     mounted() {
@@ -56,6 +60,14 @@
             if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
               this.$emit('scrollToEnd')
             }
+          })
+        }
+        if (this.pollDown) {
+          this.scroll.on('scrollEnd', () => {
+            if (this.scroll.y === 0) {
+              this.$emit('pollDown')
+            }
+
           })
         }
       },

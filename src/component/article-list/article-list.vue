@@ -1,6 +1,6 @@
 <template>
   <div>
-    <scroll class="article-list" :data="article" :pollup="pollup" @scrollToEnd="getMore">
+    <scroll class="article-list" :data="article" :pollup="pollup" :pollDown="pollDown" @scrollToEnd="getMore" @pollDown="pollRefresh">
       <ul>
         <li v-for="item in article" @click="selectItem(item)">
           <div class="suo">
@@ -29,9 +29,10 @@
 
   export default {
     props: ['article'],
-    data(){
-      return{
-        pollup: true
+    data() {
+      return {
+        pollup: true,
+        pollDown: true
       }
     },
     methods: {
@@ -47,8 +48,11 @@
           path: `/idanmu/home/${item._id}`
         })
       },
-      getMore(){
+      getMore() {
         this.$emit('getMore')
+      },
+      pollRefresh(){
+        this.$emit('refresh')
       }
     },
     components: {
