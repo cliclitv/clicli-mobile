@@ -1,7 +1,7 @@
 <template>
   <div class="tab">
-    <ul :style="style">
-      <router-link to="/idanmu" @click.native="changeBg('#ff677d')">
+    <ul :style="style" class="status">
+      <router-link to="/idanmu/home" @click.native="changeBg('#ff677d')">
         <li>后庭花</li>
       </router-link>
       <router-link to="/uraban/home" @click.native="changeBg('#48a1ff')">

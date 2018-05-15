@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <tab></tab>
     <loading></loading>
     <keep-alive>
@@ -14,6 +14,23 @@
   import Loading from 'base/loading/loading'
 
   export default {
+    // mounted() {
+    //   this.changeHash()
+    // },
+    // methods: {
+    //   changeHash() {
+    //     const app = document.getElementById('app')
+    //     const MutationObserver = window.MutationObserver || window.WebKitMutationObserver
+    //     const options = {
+    //       childList: true,
+    //       subtree: true
+    //     }
+    //     const mo = new MutationObserver(function () {
+    //       console.log('111')
+    //     })
+    //     mo.observe(app, options)
+    //   }
+    // },
     components: {
       Tab,
       Loading

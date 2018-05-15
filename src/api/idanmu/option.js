@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const request = axios.create({
-  baseURL: 'http://www.idanmu.cc'
+  baseURL: 'https://www.idanmu.cc'
 })
 
 // 查找设置项

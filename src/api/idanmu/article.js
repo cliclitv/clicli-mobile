@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const req = axios.create({
-  baseURL: 'http://www.idanmu.cc'
+  baseURL: 'https://www.idanmu.cc'
 })
 
 // 获取所有文章

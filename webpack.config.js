@@ -90,17 +90,17 @@ module.exports = {
     compress: true,
     port: 1069,
     historyApiFallback: true,
-    hot: true,
-    proxy: {
-      '/user/': {
-        target: 'http://www.idanmu.cc'
-      },
-      '/article/': {
-        target: 'http://www.idanmu.cc'
-      },
-      '/option/': {
-        target: 'http://www.idanmu.cc'
-      }
-    }
+    hot: true
+    // proxy: {
+    //   '/user/': {
+    //     target: 'https://www.idanmu.cc'
+    //   },
+    //   '/article/': {
+    //     target: 'https://www.idanmu.cc'
+    //   },
+    //   '/option/': {
+    //     target: 'https://www.idanmu.cc'
+    //   }
+    // }
   }
 }
