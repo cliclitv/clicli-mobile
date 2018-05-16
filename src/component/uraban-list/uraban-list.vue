@@ -1,6 +1,6 @@
 <template>
   <div>
-    <scroll class="uraban-list" :data="article" :pollup="pollup" @scrollToEnd="getMore">
+    <div class="uraban-list">
       <ul>
         <li v-for="item in article" @click="selectItem(item)">
           <div class="bio">
@@ -18,7 +18,7 @@
           </div>
         </li>
       </ul>
-    </scroll>
+    </div>
     <div class="option">
       <i class="iconfont icon-circle"></i>
     </div>
@@ -29,7 +29,6 @@
 <script>
   import md5 from 'blueimp-md5'
   import marked from 'marked'
-  import Scroll from 'base/scroll/scroll'
 
   export default {
     props: ['article'],
@@ -61,20 +60,17 @@
       getMore() {
         this.$emit('getMore')
       }
-    },
-    components: {
-      Scroll
     }
   }
 </script>
 
 <style>
   .uraban-list {
-    position: fixed;
+    position: absolute;
     top: 51px;
     bottom: 20px;
-    left: 0;
-    right: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .uraban-list li {
