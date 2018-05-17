@@ -1,39 +1,43 @@
 <template>
-  <div>
-    <scroll class="article-list" :data="article" :pollup="pollup" :pollDown="pollDown" @scrollToEnd="getMore" @pollDown="pollRefresh">
-      <ul>
-        <li v-for="item in article" @click="selectItem(item)">
-          <div class="suo">
-            <img :src="getSuo(item.content)" alt="">
+  <div class="article-list" @scrollToEnd="getMore">
+    <ul>
+      <li v-for="item in article" @click="selectItem(item)">
+        <div class="suo">
+          <img :src="getSuo(item.content)" alt="">
+        </div>
+        <div class="content">
+          <h2>{{item.title}}</h2>
+          <div class="bio">
+            <img :src="getAvatar(item.author.qq)" alt="">
+            <p>{{item.author.name}}</p>
           </div>
-          <div class="content">
-            <h2>{{item.title}}</h2>
-            <div class="bio">
-              <img :src="getAvatar(item.author.qq)" alt="">
-              <p>{{item.author.name}}</p>
-            </div>
-          </div>
+        </div>
 
-        </li>
-      </ul>
-
-    </scroll>
+      </li>
+    </ul>
     <router-view></router-view>
   </div>
-
-
 </template>
 
 <script>
-  import Scroll from 'base/scroll/scroll'
+  // import Scroll from 'base/scroll/scroll'
 
   export default {
-    props: ['article'],
-    data() {
-      return {
-        pollup: true,
-        pollDown: true
-      }
+    props: ['article', 'sw'],
+    mounted() {
+      window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        const innerHeight = window.innerHeight
+        const offsetHeight = document.documentElement.offsetHeight || document.body.offsetHeight
+        const t = scrollTop + innerHeight - offsetHeight
+        console.log(t)
+        if (t === 0) {
+          if (this.sw) {
+            this.$emit('getMore')
+          }
+        }
+      })
+
     },
     methods: {
       getSuo(content) {
@@ -51,23 +55,17 @@
       getMore() {
         this.$emit('getMore')
       },
-      pollRefresh(){
-        this.$emit('refresh')
-      }
-    },
-    components: {
-      Scroll
+      // pollRefresh(){
+      //   this.$emit('refresh')
+      // }
     }
   }
 </script>
 
 <style scoped>
   .article-list {
-    position: fixed;
-    top: 51px;
-    bottom: 56px;
-    left: 0;
-    right: 0;
+    margin-top: 51px;
+    margin-bottom: 61px
 
   }
 
@@ -84,6 +82,10 @@
 
   .article-list .content {
     flex: 1;
+  }
+
+  .article-list::-webkit-scrollbar {
+    display: none;
   }
 
   .content img {

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <article-list :article="article" @getMore="getMore" @refresh="refresh"></article-list>
+    <article-list :article="article" :sw="sw" @getMore="getMore" @refresh="refresh"></article-list>
   </div>
 </template>
 
@@ -14,7 +14,8 @@
         article: [],
         page: 1,
         pageSize: 10,
-        isShow: false
+        isShow: false,
+        sw: true
       }
     },
     created() {
@@ -28,6 +29,7 @@
           this.isShow = true
           if (res.data.code === 0) {
             if (flag) {
+              this.sw = true
               this.article = this.article.concat(res.data.result)
               if (res.data.count === 0) {
                 this.isShow = false
@@ -41,6 +43,7 @@
       },
       getMore() {
         this.page++
+        this.sw = false
         this.getIdanmuArticle(true)
       },
       refresh() {

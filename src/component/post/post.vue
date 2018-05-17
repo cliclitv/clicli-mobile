@@ -7,7 +7,7 @@
         </div>
         <h2 v-if="post.title" v-text="post.title.substr(0,24)+'…'"></h2>
       </div>
-      <scroll class="wrap" :data="post">
+      <div class="wrap" ref="wrap">
         <div>
           <div class="bio">
             <div class="avatar">
@@ -19,7 +19,7 @@
             <p v-html="getText(post.content)"></p>
           </div>
         </div>
-      </scroll>
+      </div>
     </div>
 
 
@@ -30,7 +30,7 @@
 <script>
   import {getOneArticle} from "api/idanmu/article"
   import marked from 'marked'
-  import Scroll from 'base/scroll/scroll'
+  import JRoll from 'jroll'
 
   export default {
     data() {
@@ -40,6 +40,23 @@
     },
     created() {
       this.getOne()
+    },
+    watch: {
+      post: function (val) {
+        if (val.content) {
+          setTimeout(() => {
+            let jroll = new JRoll(this.$refs.wrap, {})
+            let imgs = [].slice.call(document.querySelectorAll(".content img"))
+            if (imgs) {
+              imgs.forEach((i) => {
+                i.onload = function () {
+                  jroll.refresh()
+                }
+              })
+            }
+          }, 20)
+        }
+      }
     },
     methods: {
       back() {
@@ -59,9 +76,6 @@
         const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
         return marked(str, {breaks: true})
       },
-    },
-    components: {
-      Scroll
     }
   }
 </script>
@@ -102,14 +116,14 @@
     text-align: center;
   }
 
-  .article-detail .avatar{
+  .article-detail .avatar {
     padding: 15px;
     justify-content: center;
     display: flex;
     align-items: center;
   }
 
-  .avatar img{
+  .avatar img {
     border-radius: 15px;
     height: 30px;
     width: 30px;

@@ -60,10 +60,14 @@
 </script>
 
 <style>
-  .loading{
-    position: relative;
+  .loading {
+    position: fixed;
     z-index: 999;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+
   .spinner {
     margin: 100px auto;
     width: 20px;

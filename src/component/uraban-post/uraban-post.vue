@@ -7,7 +7,7 @@
         </div>
         <h2 v-if="post.title" v-text="post.title.substr(0,24)+'…'"></h2>
       </div>
-      <scroll class="wrap" :data="post">
+      <div class="wrap" ref="wrap">
         <div>
           <div class="bio">
             <div class="avatar">
@@ -19,7 +19,7 @@
             <p v-html="getText(post.text)"></p>
           </div>
         </div>
-      </scroll>
+      </div>
     </div>
 
 
@@ -30,8 +30,8 @@
 <script>
   import {getOneArticle} from "api/uraban/article"
   import md5 from 'blueimp-md5'
+  import JRoll from 'jroll'
   import marked from 'marked'
-  import Scroll from 'base/scroll/scroll'
 
   export default {
     data() {
@@ -41,6 +41,25 @@
     },
     created() {
       this.getOne()
+    },
+
+    watch: {
+      post: function (val) {
+        if (val.text) {
+          setTimeout(() => {
+            let jroll = new JRoll(this.$refs.wrap, {})
+            let imgs = [].slice.call(document.querySelectorAll(".content img"))
+            if (imgs) {
+              imgs.forEach((i) => {
+                i.onload = function () {
+                  jroll.refresh()
+                }
+
+              })
+            }
+          }, 20)
+        }
+      }
     },
     methods: {
       back() {
@@ -60,9 +79,6 @@
         const str = text.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
         return marked(str, {breaks: true})
       },
-    },
-    components: {
-      Scroll
     }
   }
 </script>
@@ -81,7 +97,7 @@
 
   .wrap {
     position: fixed;
-    top: 41px;
+    top: 51px;
     bottom: 10px;
     right: 0;
     left: 0;

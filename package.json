@@ -34,7 +34,11 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "better-scroll": "^1.10.2",
     "blueimp-md5": "^2.10.0",
+    "fastclick": "^1.0.6",
+    "install": "^0.11.0",
+    "jroll": "^2.6.1",
     "marked": "^0.3.19",
+    "npm": "^6.0.1",
     "vconsole": "^3.2.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"

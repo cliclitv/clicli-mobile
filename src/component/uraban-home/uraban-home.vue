@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <uraban-list :article="article" @getMore="getMore"></uraban-list>
+    <uraban-list :article="article" :sw="sw" @getMore="getMore"></uraban-list>
   </div>
 </template>
 
@@ -14,7 +14,8 @@
         article: [],
         page: 1,
         pageSize: 4,
-        isShow: false
+        isShow: false,
+        sw: true
       }
     },
     created() {
@@ -25,6 +26,7 @@
         getAll(this.page, this.pageSize).then(res => {
           if (res.data.status === 200) {
             if (flag) {
+              this.sw = true
               this.article = this.article.concat(res.data.data)
               if (res.data.count === 0) {
                 this.isShow = false
@@ -36,6 +38,7 @@
         })
       },
       getMore() {
+        this.sw = false
         this.page++
         this.getUrabanArticle(true)
       }

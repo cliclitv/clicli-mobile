@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="uraban-list">
+    <div class="uraban-list" style="overflow: auto">
       <ul>
         <li v-for="item in article" @click="selectItem(item)">
           <div class="bio">
@@ -31,11 +31,21 @@
   import marked from 'marked'
 
   export default {
-    props: ['article'],
-    data() {
-      return {
-        pollup: true
-      }
+    props: ['article', 'sw'],
+    mounted() {
+      window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        const innerHeight = window.innerHeight
+        const offsetHeight = document.documentElement.offsetHeight || document.body.offsetHeight
+        const t = scrollTop + innerHeight - offsetHeight
+        console.log(t)
+        if (t === 0) {
+          if (this.sw) {
+            this.$emit('getMore')
+          }
+        }
+      })
+
     },
     methods: {
       getAvatar(avatar) {
@@ -66,11 +76,7 @@
 
 <style>
   .uraban-list {
-    position: absolute;
-    top: 51px;
-    bottom: 20px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    margin-top: 51px;
   }
 
   .uraban-list li {
