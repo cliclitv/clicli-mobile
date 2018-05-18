@@ -1,7 +1,7 @@
 <template>
   <div class="article-list" @scrollToEnd="getMore">
     <ul>
-      <li v-for="item in article" @click="selectItem(item)">
+      <li v-for="item in article" @click="selectItem(item)" :key="item._id" onclick="void(0)">
         <div class="suo">
           <img :src="getSuo(item.content)" alt="">
         </div>

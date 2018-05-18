@@ -3,6 +3,7 @@ body {
     color: #b8b6b4;
     background: #171a21;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 
 a {

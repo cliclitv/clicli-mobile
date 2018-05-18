@@ -2,7 +2,7 @@
   <div>
     <div class="uraban-list" style="overflow: auto">
       <ul>
-        <li v-for="item in article" @click="selectItem(item)">
+        <li v-for="item in article" @click="selectItem(item)" :key="item._id">
           <div class="bio">
             <div class="avatar">
               <img :src="getAvatar(item.author[0].mail)" alt="">
@@ -77,9 +77,11 @@
 <style>
   .uraban-list {
     margin-top: 51px;
+    cursor: pointer;
   }
 
   .uraban-list li {
+    cursor: pointer;
     padding: 10px;
     background: #272b35;
     margin: 10px 0;
