@@ -15,7 +15,7 @@
               <p v-if="post.author">{{post.author.name}}</p>
             </div>
           </div>
-          <div class="content" v-if="post.content">
+          <div class="content" v-if="post.content" v-lazy-container="{ selector: 'img' }">
             <p v-html="getText(post.content)"></p>
           </div>
         </div>
@@ -74,7 +74,8 @@
       },
       getText(content) {
         const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
-        return marked(str, {breaks: true})
+        const mark = marked(str, {breaks: true})
+        return mark.replace(/src/g, 'data-src')
       },
     }
   }
