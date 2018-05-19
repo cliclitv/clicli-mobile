@@ -10,7 +10,7 @@
             </div>
           </div>
           <h2>{{item.title}}</h2>
-          <p class="text" v-html="getText(item.text)"></p>
+          <p class="text" v-html="getText(item.text)" v-lazy-container="{ selector: 'img' }"></p>
           <div class="bot">
            <span class="sort">
           {{item.categories[0].name}}
@@ -55,9 +55,9 @@
         let mark = marked(str, {breaks: true})
         let result = mark.match(/([\s\S]*)more/)[1]
         if (result) {
-          return result
+          return result.replace(/src/g, 'data-src')
         } else {
-          return mark
+          return mark.replace(/src/g, 'data-src')
         }
 
       },
