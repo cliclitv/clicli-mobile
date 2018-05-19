@@ -41,7 +41,7 @@
     },
     created() {
       this.getOne()
-    },
+    }
 
     watch: {
       post: function (val) {

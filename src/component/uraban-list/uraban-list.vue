@@ -5,7 +5,7 @@
         <li v-for="item in article" @click="selectItem(item)" :key="item._id">
           <div class="bio">
             <div class="avatar">
-              <img :src="getAvatar(item.author[0].mail)" alt="">
+              <img v-lazy="getAvatar(item.author[0].mail)" alt="">
               <p class="name">{{item.author[0].name}}</p>
             </div>
           </div>
@@ -38,7 +38,6 @@
         const innerHeight = window.innerHeight
         const offsetHeight = document.documentElement.offsetHeight || document.body.offsetHeight
         const t = scrollTop + innerHeight - offsetHeight
-        console.log(t)
         if (t === 0) {
           if (this.sw) {
             this.$emit('getMore')
@@ -77,11 +76,9 @@
 <style>
   .uraban-list {
     margin-top: 51px;
-    cursor: pointer;
   }
 
   .uraban-list li {
-    cursor: pointer;
     padding: 10px;
     background: #272b35;
     margin: 10px 0;

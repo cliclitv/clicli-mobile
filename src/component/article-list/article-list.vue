@@ -1,14 +1,14 @@
 <template>
   <div class="article-list" @scrollToEnd="getMore">
     <ul>
-      <li v-for="item in article" @click="selectItem(item)" :key="item._id" onclick="void(0)">
+      <li v-for="item in article" @click="selectItem(item)" :key="item._id">
         <div class="suo">
-          <img :src="getSuo(item.content)" alt="">
+          <img v-lazy="getSuo(item.content)" alt="">
         </div>
         <div class="content">
           <h2>{{item.title}}</h2>
           <div class="bio">
-            <img :src="getAvatar(item.author.qq)" alt="">
+            <img v-lazy="getAvatar(item.author.qq)" alt="">
             <p>{{item.author.name}}</p>
           </div>
         </div>
@@ -30,7 +30,6 @@
         const innerHeight = window.innerHeight
         const offsetHeight = document.documentElement.offsetHeight || document.body.offsetHeight
         const t = scrollTop + innerHeight - offsetHeight
-        console.log(t)
         if (t === 0) {
           if (this.sw) {
             this.$emit('getMore')
