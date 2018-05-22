@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import router from './router'
 import App from './app.vue'
-import 'common/css/reset'
+import 'common/css/reset.css'
 import 'common/css/index.css'
 import VueLazyLoad from 'vue-lazyload'
 import fastclick from 'fastclick'

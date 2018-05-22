@@ -8,6 +8,7 @@ const ArticleList = () => import('component/article-list/article-list')
 const Home = () => import('component/home/home')
 const UrabanHome = () => import('component/uraban-home/uraban-home')
 const Post = () => import('component/post/post')
+const Sort = () => import('component/sort/sort')
 const UrabanPost = () => import('component/uraban-post/uraban-post')
 
 Vue.use(Router)
@@ -32,13 +33,13 @@ export default new Router({
           children: [
             {
               path: ':id',
-              component: Post,
+              component: Post
             }
           ]
         },
         {
           path: '/idanmu/sort',
-          component: ArticleList
+          component: Sort
         },
         {
           path: '/idanmu/author',

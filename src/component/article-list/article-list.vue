@@ -40,7 +40,7 @@
     },
     methods: {
       getSuo(content) {
-        const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
+        const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me')
         return str.match(/suo(.+?)(gif|png|jpg|jpeg)/i)[0].slice(5)
       },
       getAvatar(qq) {
@@ -110,11 +110,16 @@
   .bio img {
     margin-right: 10px;
   }
+  .suo{
+    height: 100px;
+    width: 120px;
+    margin-right: 10px;
+    background: #242833;
+  }
 
   .suo img {
     height: 100px;
     width: 120px;
-    margin-right: 10px;
     object-fit: cover;
   }
 

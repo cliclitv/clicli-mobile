@@ -2,7 +2,7 @@
   <div class="tab">
     <ul :style="style" class="status">
       <router-link to="/idanmu/home" @click.native="changeBg('#ff677d')">
-        <li>后庭花</li>
+        <li>和谐区</li>
       </router-link>
       <router-link to="/uraban/home" @click.native="changeBg('#48a1ff')">
         <li class="uraban">里世界</li>
