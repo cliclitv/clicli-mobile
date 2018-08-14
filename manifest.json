@@ -1,0 +1,15 @@
+{
+  "short_name": "和谐区",
+  "name": "ACG和谐区",
+  "icons": [
+    {
+      "src":"http://wx3.sinaimg.cn/mw690/0060lm7Tly1fu99xw6qskj30dw0dwt8y.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#303030",
+  "theme_color": "#fe2c55",
+  "display": "standalone"
+}
