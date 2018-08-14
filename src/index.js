@@ -5,7 +5,6 @@ import 'common/styl/reset.styl'
 import 'common/styl/index.styl'
 import VueLazyLoad from 'vue-lazyload'
 import fastclick from 'fastclick'
-import {tongji} from 'common/js/tongji'
 
 Vue.use(VueLazyLoad, {
   loading: require('common/img/lazy.jpg')
