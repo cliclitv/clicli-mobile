@@ -1,29 +1,29 @@
 <template>
-  <transition name="fade">
-    <div class="article-detail" v-if="post">
-      <div class="top">
-        <div class="back" @click="back">
-          <i class="iconfont icon-back"></i>
-        </div>
-        <h2 v-if="post.title" v-text="post.title.substr(0,24)+'…'"></h2>
-      </div>
-      <div class="wrap" ref="wrap">
-        <div>
-          <div class="bio">
-            <div class="avatar">
-              <img :src="getAvatar(post.author.qq)" v-if="post.author">
-              <p v-if="post.author">{{post.author.name}}</p>
+    <transition name="fade">
+        <div class="article-detail" v-if="post">
+            <div class="top">
+                <div class="back" @click="back">
+                    <i class="iconfont icon-back"></i>
+                </div>
+                <h2 v-if="post.title" v-text="post.title.substr(0,22)+' …'"></h2>
             </div>
-          </div>
-          <div class="content" v-if="post.content" v-lazy-container="{ selector: 'img' }">
-            <p v-html="getText(post.content)"></p>
-          </div>
+            <div class="wrap" ref="wrap">
+                <div>
+                    <div class="bio">
+                        <div class="avatar">
+                            <img :src="getAvatar(post.uqq)">
+                            <p>{{post.uname}}</p>
+                        </div>
+                    </div>
+                    <div class="content" v-if="post.content" v-lazy-container="{ selector: 'img' }">
+                        <p v-html="getText(post.content)"></p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
 
-  </transition>
+    </transition>
 
 </template>
 
@@ -80,77 +80,76 @@
   }
 </script>
 
-<style>
-  .article-detail {
-    position: fixed;
-    background: #171a21;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    font-size: 14px;
-  }
+<style lang="stylus">
+    @import "~common/styl/variable"
+    .article-detail
+        position: fixed
+        background: #171a21
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        z-index: 10
+        font-size: 14px
 
-  .wrap {
-    position: fixed;
-    top: 41px;
-    bottom: 10px;
-    right: 0;
-    left: 0;
-  }
+    .wrap
+        position: fixed
+        top: 41px
+        bottom: 10px
+        right: 0
+        left: 0
 
-  .article-detail .top {
-    background: #ff677d;
-    padding: 12px;
-    color: #fff;
-    display: flex;
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-  }
+    .article-detail .top
+        background $bg-color
+        border-bottom 0.7px solid $border-color
+        padding: 12px
+        color: #fff
+        display: flex
+        position: fixed
+        width: 100%
+        z-index: 999
+        box-sizing: border-box;
 
-  .top h2 {
-    flex: 1;
-    font-size: 14px;
-    text-align: center;
-  }
+    .top h2
+        font-size: 14px
+        text-align: center
+        padding-left: 10px
 
-  .article-detail .avatar {
-    padding: 15px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-  }
+    .article-detail .avatar
+        padding: 15px
+        justify-content: center
+        display: flex
+        align-items: center
 
-  .avatar img {
-    border-radius: 15px;
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
-  }
+    .avatar img
+        border-radius: 15px
+        height: 30px
+        width: 30px
+        margin-right: 10px
 
-  .content {
-    padding: 10px;
-  }
+    .content
+        padding: 10px
 
-  .content p img {
-    width: 100%;
-  }
+    .content
+        p
+            a
+                color: #fff
+                font-weight bold
+            img
+                width: 100%
 
-  blockquote {
-    background: #2b2e37;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 13px;
-  }
+    blockquote
+        background: $bg-color
+        border: .7px solid $border-color
+        padding: 10px
+        margin: 10px 0
+        font-size: 13px
 
-  .fade-enter-active, .fade-leave-active {
-    transition: all 0.3s
-  }
+    .fade-enter-active, .fade-leave-active
+        transition: all 0.3s
 
-  .fade-enter, .fade-leave-to {
-    transform: translate3d(100%, 0, 0)
-  }
+    .fade-enter, .fade-leave-to
+        transform: translate3d(100%, 0, 0)
+
 
 </style>

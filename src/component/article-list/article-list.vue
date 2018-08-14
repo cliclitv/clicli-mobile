@@ -1,22 +1,22 @@
 <template>
-  <div class="article-list" @scrollToEnd="getMore">
-    <ul>
-      <li v-for="item in article" @click="selectItem(item)" :key="item.id">
-        <div class="suo">
-          <img v-lazy="getSuo(item.content)" alt="">
-        </div>
-        <div class="content">
-          <h2>{{item.title}}</h2>
-          <div class="bio">
-            <img v-lazy="getAvatar(item.uqq)" alt="">
-            <p>{{item.uname}}</p>
-          </div>
-        </div>
+    <div class="article-list" @scrollToEnd="getMore">
+        <ul>
+            <li v-for="item in article" @click="selectItem(item)" :key="item.id">
+                <div class="suo">
+                    <img v-lazy="getSuo(item.content)" alt="">
+                </div>
+                <div class="content">
+                    <h2>{{item.title}}</h2>
+                    <div class="bio">
+                        <img v-lazy="getAvatar(item.uqq)" alt="">
+                        <p>{{item.uname}}</p>
+                    </div>
+                </div>
 
-      </li>
-    </ul>
-    <router-view></router-view>
-  </div>
+            </li>
+        </ul>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
@@ -61,66 +61,55 @@
   }
 </script>
 
-<style scoped>
-  .article-list {
-    margin-top: 51px;
-    margin-bottom: 61px
+<style scoped lang="stylus">
+    .article-list
+        margin-top: 51px
+        margin-bottom: 61px
 
-  }
+    .article-list li
+        display: flex
+        align-items: center
+        padding: 10px
+        font-size: 14px
 
-  .article-list li {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    font-size: 14px;
-  }
+    .article-list li:nth-of-type(odd)
+        background: #13151c
 
-  .article-list li:nth-of-type(odd) {
-    background: #13151c;
-  }
+    .article-list .content
+        flex: 1
 
-  .article-list .content {
-    flex: 1;
-  }
+    .article-list::-webkit-scrollbar
+        display: none
 
-  .article-list::-webkit-scrollbar {
-    display: none;
-  }
+    .content img
+        height: 30px
+        width: 30px
+        border-radius: 50%
 
-  .content img {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-  }
+    .content
+        padding: 10px
 
-  .content {
-    padding: 10px;
-  }
+    .bio
+        display: flex
+        align-items: center
+        padding-top: 10px
 
-  .bio {
-    display: flex;
-    align-items: center;
-    padding-top: 10px;
-  }
+    .bio p
+        flex: 1
 
-  .bio p {
-    flex: 1;
-  }
+    .bio img
+        margin-right: 10px
 
-  .bio img {
-    margin-right: 10px;
-  }
-  .suo{
-    height: 100px;
-    width: 120px;
-    margin-right: 10px;
-    background: #242833;
-  }
+    .suo
+        height: 100px
+        width: 120px
+        margin-right: 10px
+        background: #242833
 
-  .suo img {
-    height: 100px;
-    width: 120px;
-    object-fit: cover;
-  }
+    .suo img
+        height: 100px
+        width: 120px
+        object-fit: cover
+
 
 </style>

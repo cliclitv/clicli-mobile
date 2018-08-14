@@ -39,7 +39,7 @@ module.exports = {
       {
         test: /\.styl(us)?$/,
         use: [
-          process.env.NODE_ENV !== 'production'
+          process.env.NODE_ENV === 'development'
             ? 'vue-style-loader'
             : MiniCssExtractPlugin.loader,
           'css-loader',
@@ -49,8 +49,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          process.env.NODE_ENV === 'development' ? 'vue-style-loader'
-            : MiniCssExtractPlugin.loader,
           "css-loader"
         ]
       },

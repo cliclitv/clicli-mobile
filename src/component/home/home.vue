@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <article-list :article="article" :sw="sw" @getMore="getMore" @refresh="refresh"></article-list>
-  </div>
+    <div class="home">
+        <article-list :article="article" :sw="sw" @getMore="getMore" @refresh="refresh"></article-list>
+    </div>
 </template>
 
 <script>
@@ -58,9 +58,9 @@
   }
 </script>
 
-<style scoped>
-  .home {
-    position: relative;
-  }
+<style scoped lang="stylus">
+    .home
+        position: relative
+
 
 </style>
