@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import {getOneArticle} from "api/idanmu/article"
+  import {getOneArticle} from "api/article"
   import marked from 'marked'
   import JRoll from 'jroll'
 
@@ -64,7 +64,7 @@
       },
       getOne() {
         getOneArticle(this.$route.params.id).then(res => {
-          if (res.data.code === 0) {
+          if (res.data.code === 201) {
             this.post = res.data.result
           }
         })
@@ -73,8 +73,7 @@
         return `http://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
       },
       getText(content) {
-        const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me');
-        const mark = marked(str, {breaks: true})
+        const mark = marked(content, {breaks: true})
         return mark.replace(/src/g, 'data-src')
       },
     }

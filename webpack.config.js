@@ -37,8 +37,17 @@ module.exports = {
         }
       },
       {
+        test: /\.styl(us)?$/,
+        use: [
+          process.env.NODE_ENV !== 'production'
+            ? 'vue-style-loader'
+            : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'stylus-loader'
+        ]
+      },
+      {
         test: /\.css$/,
-
         use: [
           process.env.NODE_ENV === 'development' ? 'vue-style-loader'
             : MiniCssExtractPlugin.loader,
@@ -82,7 +91,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
     }),
-    // new ExtractTextPlugin("css/[name].css"),
     new VueLoaderPlugin()
   ],
   devServer: {

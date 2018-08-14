@@ -24,8 +24,7 @@
 </template>
 
 <script>
-  import {request} from "api/uraban/article"
-  import {req} from "api/idanmu/article"
+  import {request} from "api/article"
 
   export default {
     data() {
@@ -43,14 +42,6 @@
           return config
         })
         request.interceptors.response.use((config) => {
-          this.isShow = false
-          return config
-        })
-        req.interceptors.request.use((config) => {
-          this.isShow = true
-          return config
-        })
-        req.interceptors.response.use((config) => {
           this.isShow = false
           return config
         })

@@ -1,16 +1,16 @@
 <template>
   <div class="b-nav">
     <ul>
-      <router-link to="/idanmu/home"><i class="iconfont icon-home"></i>
+      <router-link to="/home"><i class="iconfont icon-home"></i>
         <li>首页</li>
       </router-link>
-      <router-link to="/idanmu/sort"><i class="iconfont icon-other"></i>
+      <router-link to="/sort"><i class="iconfont icon-other"></i>
         <li>分类</li>
       </router-link>
-      <router-link to="/idanmu/author"><i class="iconfont icon-author"></i>
+      <router-link to="/author"><i class="iconfont icon-author"></i>
         <li>作者</li>
       </router-link>
-      <router-link to="/idanmu/me"><i class="iconfont icon-user"></i>
+      <router-link to="/me"><i class="iconfont icon-user"></i>
         <li>我</li>
       </router-link>
 

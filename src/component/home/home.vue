@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import {articleList} from "api/idanmu/article"
+  import {getPostsByStatus} from "api/article"
   import ArticleList from 'component/article-list/article-list'
 
   export default {
@@ -20,22 +20,22 @@
     },
     created() {
 
-      this.getIdanmuArticle()
+      this.getArticle()
 
     },
     methods: {
-      getIdanmuArticle(flag) {
-        articleList(this.page, this.pageSize).then(res => {
+      getArticle(flag) {
+        getPostsByStatus(this.page, this.pageSize).then(res => {
           this.isShow = true
-          if (res.data.code === 0) {
+          if (res.data.code === 201) {
             if (flag) {
               this.sw = true
-              this.article = this.article.concat(res.data.result)
-              if (res.data.count === 0) {
+              this.article = this.article.concat(res.data.posts)
+              if (!res.data.posts) {
                 this.isShow = false
               }
             } else {
-              this.article = res.data.result
+              this.article = res.data.posts
             }
 
           }
@@ -44,11 +44,11 @@
       getMore() {
         this.page++
         this.sw = false
-        this.getIdanmuArticle(true)
+        this.getArticle(true)
       },
       refresh() {
         this.page = 1
-        this.getIdanmuArticle(false)
+        this.getArticle(false)
       }
     },
 

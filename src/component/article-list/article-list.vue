@@ -1,15 +1,15 @@
 <template>
   <div class="article-list" @scrollToEnd="getMore">
     <ul>
-      <li v-for="item in article" @click="selectItem(item)" :key="item._id">
+      <li v-for="item in article" @click="selectItem(item)" :key="item.id">
         <div class="suo">
           <img v-lazy="getSuo(item.content)" alt="">
         </div>
         <div class="content">
           <h2>{{item.title}}</h2>
           <div class="bio">
-            <img v-lazy="getAvatar(item.author.qq)" alt="">
-            <p>{{item.author.name}}</p>
+            <img v-lazy="getAvatar(item.uqq)" alt="">
+            <p>{{item.uname}}</p>
           </div>
         </div>
 
@@ -48,7 +48,7 @@
       },
       selectItem(item) {
         this.$router.push({
-          path: `/idanmu/home/${item._id}`
+          path: `/home/${item.id}`
         })
       },
       getMore() {
