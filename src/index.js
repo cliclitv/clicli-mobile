@@ -12,11 +12,11 @@ Vue.use(VueLazyLoad, {
 })
 fastclick.attach(document.body)
 
-// 百度统计
-router.afterEach(() => {
-  setTimeout(() => {
-    tongji()
-  }, 0)
+router.beforeEach((to, from, next) => {
+  if (to.path) {
+    _hmt.push(['_trackPageview', '/#' + to.fullPath])
+  }
+  next()
 })
 
 new Vue({
