@@ -5,6 +5,7 @@ const ArticleList = () => import('component/article-list/article-list')
 const Home = () => import('component/home/home')
 const Post = () => import('component/post/post')
 const Sort = () => import('component/sort/sort')
+const User = () => import('component/user/user')
 
 Vue.use(Router)
 
@@ -15,7 +16,7 @@ export default new Router({
       redirect: '/home/'
     },
     {
-      path: '/home/',
+      path: '/home',
       component: Home,
       children: [
         {
@@ -33,8 +34,8 @@ export default new Router({
       component: ArticleList
     },
     {
-      path: '/me',
-      component: ArticleList
+      path: '/user',
+      component: User
     },
   ]
 })

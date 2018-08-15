@@ -1,5 +1,5 @@
 <template>
-    <div class="loading" v-show="isShow">
+    <div class="loading">
         <div class="spinner">
             <i></i>
         </div>
@@ -11,26 +11,6 @@
   import {request} from "api/article"
 
   export default {
-    data() {
-      return {
-        isShow: false
-      }
-    },
-    created() {
-      this._interCeptor()
-    },
-    methods: {
-      _interCeptor() {
-        request.interceptors.request.use((config) => {
-          this.isShow = true
-          return config
-        })
-        request.interceptors.response.use((config) => {
-          this.isShow = false
-          return config
-        })
-      }
-    }
   }
 </script>
 

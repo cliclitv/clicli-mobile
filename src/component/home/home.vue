@@ -1,12 +1,14 @@
 <template>
     <div class="home">
         <article-list :article="article" :sw="sw" @getMore="getMore" @refresh="refresh"></article-list>
+        <loading v-show="isShow"></loading>
     </div>
 </template>
 
 <script>
   import {getPostsByStatus} from "api/article"
   import ArticleList from 'component/article-list/article-list'
+  import Loading from 'base/loading/loading'
 
   export default {
     data() {
@@ -14,7 +16,7 @@
         article: [],
         page: 1,
         pageSize: 10,
-        isShow: false,
+        isShow: true,
         sw: true
       }
     },
@@ -26,8 +28,8 @@
     methods: {
       getArticle(flag) {
         getPostsByStatus(this.page, this.pageSize).then(res => {
-          this.isShow = true
           if (res.data.code === 201) {
+            this.isShow = false
             if (flag) {
               this.sw = true
               this.article = this.article.concat(res.data.posts)
@@ -53,7 +55,8 @@
     },
 
     components: {
-      ArticleList
+      ArticleList,
+      Loading
     }
   }
 </script>

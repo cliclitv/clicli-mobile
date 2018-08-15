@@ -20,9 +20,8 @@
                     </div>
                 </div>
             </div>
+            <loading v-show="isShow"></loading>
         </div>
-
-
     </transition>
 
 </template>
@@ -31,11 +30,13 @@
   import {getOneArticle} from "api/article"
   import marked from 'marked'
   import JRoll from 'jroll'
+  import Loading from 'base/loading/loading'
 
   export default {
     data() {
       return {
-        post: {}
+        post: {},
+        isShow: true
       }
     },
     created() {
@@ -65,6 +66,7 @@
       getOne() {
         getOneArticle(this.$route.params.id).then(res => {
           if (res.data.code === 201) {
+            this.isShow = false
             this.post = res.data.result
           }
         })
@@ -76,6 +78,9 @@
         const mark = marked(content, {breaks: true})
         return mark.replace(/src/g, 'data-src')
       },
+    },
+    components: {
+      Loading
     }
   }
 </script>
@@ -84,7 +89,7 @@
     @import "~common/styl/variable"
     .article-detail
         position: fixed
-        background: #171a21
+        background: $b-color
         top: 0
         bottom: 0
         left: 0

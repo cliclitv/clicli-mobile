@@ -40,7 +40,7 @@
     },
     methods: {
       getSuo(content) {
-        const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.me')
+        const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.user')
         return str.match(/suo(.+?)\)/i)[1].slice(2)
       },
       getAvatar(qq) {
@@ -62,6 +62,7 @@
 </script>
 
 <style scoped lang="stylus">
+    @import "~common/styl/variable"
     .article-list
         margin-top: 51px
         margin-bottom: 61px
@@ -73,7 +74,7 @@
         font-size: 14px
 
     .article-list li:nth-of-type(odd)
-        background: #13151c
+        background: $b-color
 
     .article-list .content
         flex: 1
