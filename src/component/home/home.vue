@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <article-list :article="article" :sw="sw" @getMore="getMore" @refresh="refresh"></article-list>
+        <router-view></router-view>
         <loading v-show="isShow"></loading>
     </div>
 </template>

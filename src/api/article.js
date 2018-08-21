@@ -1,11 +1,12 @@
 import axios from 'axios'
 import {getStorage} from "common/js/localstorage"
+
 export const request = axios.create({
-  baseURL: 'http://api.chinko.cc'
+  baseURL: 'https://api.chinko.cc'
 })
 
 // 根据分类获取发布状态的文章
-export function getPostsBySort(sort,page,pageSize) {
+export function getPostsBySort(sort, page, pageSize) {
   return request.get('/posts/both', {
     params: {
       status: 'public',
@@ -17,10 +18,11 @@ export function getPostsBySort(sort,page,pageSize) {
 }
 
 // 根据状态获取文章
-export function getPostsByStatus(page,pageSize) {
+export function getPostsByStatus(page, pageSize, type) {
   return request.get('/posts/type', {
     params: {
       status: 'public',
+      type,
       page,
       pageSize,
     }
@@ -53,6 +55,7 @@ export function writeArticle(post) {
     content: post.content,
     status: post.status,
     sort: post.sort,
+    type: post.type,
     uid: getStorage('user-info').id
   })
 }
@@ -64,6 +67,7 @@ export function update(post) {
     content: post.content,
     status: post.status,
     sort: post.sort,
+    type: post.type,
     uid: getStorage('user-info').id
   })
 }

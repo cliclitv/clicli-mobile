@@ -36,12 +36,10 @@
     "axios": "^0.18.0",
     "better-scroll": "^1.12.6",
     "blueimp-md5": "^2.10.0",
-    "fastclick": "^1.0.6",
     "jroll": "^2.6.5",
     "marked": "^0.4.0",
-    "vconsole": "^3.2.0",
-    "vue": "^2.5.17",
+    "vue": "^2.5.2",
     "vue-lazyload": "^1.2.6",
-    "vue-router": "^3.0.1"
+    "vue-router": "^2.7.0"
   }
 }

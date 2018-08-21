@@ -5,13 +5,13 @@
                 <div class="back" @click="back">
                     <i class="iconfont icon-back"></i>
                 </div>
-                <h2 v-if="post.title" v-text="post.title.substr(0,22)+' …'"></h2>
+                <h2 v-if="post.title" v-text="post.title.substr(0,20)+' …'"></h2>
             </div>
             <div class="wrap" ref="wrap">
                 <div>
                     <div class="bio">
                         <div class="avatar">
-                            <img :src="getAvatar(post.uqq)">
+                            <img :src="getAvatar(post.uqq)" v-show="post.uqq">
                             <p>{{post.uname}}</p>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
 <script>
   import {getOneArticle} from "api/article"
   import marked from 'marked'
-  import JRoll from 'jroll'
+  import Bscroll from 'better-scroll'
   import Loading from 'base/loading/loading'
 
   export default {
@@ -46,12 +46,12 @@
       post: function (val) {
         if (val.content) {
           setTimeout(() => {
-            let jroll = new JRoll(this.$refs.wrap, {})
+            let scroll = new Bscroll(this.$refs.wrap, {})
             let imgs = [].slice.call(document.querySelectorAll(".content img"))
             if (imgs) {
               imgs.forEach((i) => {
                 i.onload = function () {
-                  jroll.refresh()
+                  scroll.refresh()
                 }
               })
             }
@@ -61,7 +61,9 @@
     },
     methods: {
       back() {
-        this.$router.back()
+        this.$router.push({
+          path: `/home/`
+        })
       },
       getOne() {
         getOneArticle(this.$route.params.id).then(res => {
@@ -72,11 +74,13 @@
         })
       },
       getAvatar(qq) {
-        return `http://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
+        return `https://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
       },
       getText(content) {
-        const mark = marked(content, {breaks: true})
+        let str = content.replace('http://', 'https://')
+        let mark = marked(str, {breaks: true})
         return mark.replace(/src/g, 'data-src')
+
       },
     },
     components: {
@@ -94,7 +98,7 @@
         bottom: 0
         left: 0
         right: 0
-        z-index: 10
+        z-index: 100
         font-size: 14px
 
     .wrap
@@ -115,10 +119,16 @@
         z-index: 999
         box-sizing: border-box;
 
-    .top h2
-        font-size: 14px
-        text-align: center
-        padding-left: 10px
+    .top
+        .back
+            height: 20px
+            width: 20px
+            z-index: 100
+            display: block
+        h2
+            font-size: 14px
+            text-align: center
+            padding-left: 10px
 
     .article-detail .avatar
         padding: 15px

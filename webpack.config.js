@@ -9,7 +9,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js'
+    filename: 'js/[name].js',
+    publicPath: process.env.NODE_ENV === 'development' ? '/' : "https://m.chinko.cc/"
   },
   resolve: {
     extensions: [' ', '.js', '.json', '.vue', '.css'],

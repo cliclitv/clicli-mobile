@@ -4,12 +4,10 @@ import App from './app.vue'
 import 'common/styl/reset.styl'
 import 'common/styl/index.styl'
 import VueLazyLoad from 'vue-lazyload'
-import fastclick from 'fastclick'
 
 Vue.use(VueLazyLoad, {
   loading: require('common/img/lazy.jpg')
 })
-fastclick.attach(document.body)
 
 router.beforeEach((to, from, next) => {
   if (to.path) {
@@ -17,6 +15,13 @@ router.beforeEach((to, from, next) => {
   }
   next()
 })
+
+if(navigator.serviceWorker != null){
+  navigator.serviceWorker.register('https://m.chinko.cc/sw.js')
+    .then(function(registartion){
+      console.log('sw注册成功:',registartion.scope)
+    })
+}
 
 new Vue({
   el: "#app",

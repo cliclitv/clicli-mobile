@@ -19,9 +19,9 @@
         position: fixed
         top: 0
         width: 100%
-        z-index: 9
         background $bg-color
         border-bottom 0.7px solid $border-color
+        z-index 3
 
     .tab ul
         display: flex

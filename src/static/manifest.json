@@ -3,13 +3,18 @@
   "name": "ACG和谐区",
   "icons": [
     {
-      "src":"http://wx3.sinaimg.cn/mw690/0060lm7Tly1fu99xw6qskj30dw0dwt8y.jpg",
+      "src":"https://wx3.sinaimg.cn/mw690/0060lm7Tly1fu99xw6qskj30dw0dwt8y.jpg",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src":"https://wx3.sinaimg.cn/mw690/0060lm7Tly1fuh5lqnhpvj30e80e8dhd.jpg",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "start_url": "/",
-  "background_color": "#303030",
-  "theme_color": "#fe2c55",
+  "start_url": "/home/",
+  "background_color": "#030406",
+  "theme_color": "#030406",
   "display": "standalone"
 }

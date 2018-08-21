@@ -1,62 +1,45 @@
 <template>
-    <div class="article-list" @scrollToEnd="getMore">
-        <ul>
-            <li v-for="item in article" @click="selectItem(item)" :key="item.id">
-                <div class="suo">
-                    <img v-lazy="getSuo(item.content)" alt="">
-                </div>
-                <div class="content">
-                    <h2>{{item.title}}</h2>
-                    <div class="bio">
-                        <img v-lazy="getAvatar(item.uqq)" alt="">
-                        <p>{{item.uname}}</p>
-                    </div>
-                </div>
+    <Scroll class="article-list">
 
-            </li>
-        </ul>
-        <router-view></router-view>
-    </div>
+            <ul>
+                <li v-for="item in article" @click="selectItem(item)" :key="item.id">
+                    <div class="suo">
+                        <img v-lazy="getSuo(item.content)" alt="">
+                    </div>
+                    <div class="content">
+                        <h2>{{item.title}}</h2>
+                        <div class="bio">
+                            <img v-lazy="getAvatar(item.uqq)" alt="">
+                            <p>{{item.uname}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+    </Scroll>
 </template>
 
 <script>
-  // import Scroll from 'base/scroll/scroll'
+  import Scroll from 'base/scroll/scroll'
 
   export default {
-    props: ['article', 'sw'],
-    mounted() {
-      window.addEventListener('scroll', () => {
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-        const innerHeight = window.innerHeight
-        const offsetHeight = document.documentElement.offsetHeight || document.body.offsetHeight
-        const t = scrollTop + innerHeight - offsetHeight
-        if (t === 0) {
-          if (this.sw) {
-            this.$emit('getMore')
-          }
-        }
-      })
+    props: ['article'],
 
-    },
     methods: {
       getSuo(content) {
-        const str = content.replace(/www.uraban.me/g, 'pic.51xiaoxin.com/www.uraban.user')
+        const str = content.replace('http://', 'https://')
         return str.match(/suo(.+?)\)/i)[1].slice(2)
       },
       getAvatar(qq) {
-        return `http://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
+        return `https://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
       },
       selectItem(item) {
         this.$router.push({
           path: `/home/${item.id}`
         })
-      },
-      getMore() {
-        this.$emit('getMore')
-      },
-      // pollRefresh(){
-      //   this.$emit('refresh')
-      // }
+      }
+    },
+    components:{
+      Scroll
     }
   }
 </script>
@@ -64,8 +47,12 @@
 <style scoped lang="stylus">
     @import "~common/styl/variable"
     .article-list
-        margin-top: 51px
-        margin-bottom: 61px
+        top: 51px
+        bottom: 57px
+        position fixed
+        right 0
+        left: 0
+        z-index 1
 
     .article-list li
         display: flex

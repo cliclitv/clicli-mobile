@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
-    <tab></tab>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
-    <b-nav></b-nav>
-  </div>
+    <div id="app">
+        <tab></tab>
+        <router-view></router-view>
+        <b-nav></b-nav>
+    </div>
 </template>
 
 <script>

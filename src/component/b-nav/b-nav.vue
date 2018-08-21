@@ -1,20 +1,23 @@
 <template>
     <div class="b-nav">
         <ul>
-            <router-link to="/home"><i class="iconfont icon-home"></i>
+            <router-link to="/home" class="item">
+                <i class="iconfont icon-home"></i>
                 <li>首页</li>
             </router-link>
-            <router-link to="/sort"><i class="iconfont icon-other"></i>
+            <router-link to="/sort" class="item">
+                <i class="iconfont icon-other"></i>
                 <li>分类</li>
             </router-link>
-            <router-link to="/author"><i class="iconfont icon-author"></i>
+            <router-link to="/author" class="item">
+                <i class="iconfont icon-author"></i>
                 <li>作者</li>
             </router-link>
-            <router-link to="/user" class="me"><i class="iconfont icon-user"></i>
+            <router-link to="/user" class="me item">
+                <i class="iconfont icon-user"></i>
                 <li>我
                     <div class="dot"></div>
                 </li>
-
             </router-link>
 
         </ul>
@@ -32,6 +35,7 @@
         bottom: 0
         width: 100%
         border-top: 0.7px solid $border-color
+        z-index: 2
 
     .b-nav ul
         background: $bg-color
@@ -39,10 +43,12 @@
         width: 100%
         font-size: 12px
 
-    .b-nav a
+    .b-nav .item
         flex: 1
         padding: 6px
         text-align: center
+        position relative
+        overflow hidden
         .me
             position relative
 

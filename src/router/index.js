@@ -10,31 +10,37 @@ const User = () => import('component/user/user')
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      redirect: '/home/'
+      redirect: '/home'
     },
     {
       path: '/home',
+      name: "home",
       component: Home,
       children: [
         {
-          path: ':id',
+          path: '/home/:id',
+          name: "detail",
           component: Post
         }
       ]
     },
     {
       path: '/sort',
+      name: "sort",
       component: Sort
     },
     {
       path: '/author',
+      name: "author",
       component: ArticleList
     },
     {
       path: '/user',
+      name: "user",
       component: User
     },
   ]
