@@ -18,12 +18,10 @@ export default new Router({
     },
     {
       path: '/home',
-      name: "home",
       component: Home,
       children: [
         {
           path: '/home/:id',
-          name: "detail",
           component: Post
         }
       ]
