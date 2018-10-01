@@ -26,7 +26,7 @@
 
     methods: {
       getSuo(content) {
-        const str = content.replace('http://', 'https://')
+        const str = content.replace(/http:/g, 'https:')
         return str.match(/suo(.+?)\)/i)[1].slice(2)
       },
       getAvatar(qq) {

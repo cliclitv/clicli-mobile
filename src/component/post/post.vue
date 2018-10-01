@@ -22,7 +22,7 @@
         </div>
       </div>
       <loading v-show="isShow"></loading>
-      <player v-show="playShow"></player>
+      <player v-show="playShow" :url="url" @back="hide" :post="post" :videos="videos" @changeUrl="changeUrl"></player>
     </div>
   </transition>
 
@@ -52,7 +52,7 @@
       this.getVideoList()
     },
     watch: {
-      post: function (val) {
+      post(val) {
         if (val.content) {
           setTimeout(() => {
             let scroll = new Bscroll(this.$refs.wrap, {
@@ -71,8 +71,14 @@
       }
     },
     methods: {
+      changeUrl(item) {
+        this.url = item.content
+      },
       back() {
         this.$router.back()
+      },
+      hide() {
+        this.playShow = false
       },
       select(item) {
         this.playShow = true
@@ -95,7 +101,7 @@
         return `https://q2.qlogo.cn/headimg_dl?dst_uin=` + qq + `&spec=100`
       },
       getText(content) {
-        let str = content.replace('http://', 'https://')
+        let str = content.replace(/http:/g, 'https:')
         let mark = marked(str, {breaks: true})
         return mark.replace(/src/g, 'data-src')
 

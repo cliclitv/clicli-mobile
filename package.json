@@ -36,6 +36,7 @@
     "axios": "^0.18.0",
     "better-scroll": "^1.12.6",
     "blueimp-md5": "^2.10.0",
+    "eplayer": "^0.2.10",
     "marked": "^0.4.0",
     "vue": "^2.5.2",
     "vue-lazyload": "^1.2.6",
