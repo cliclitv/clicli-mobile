@@ -25,37 +25,29 @@
   export default {
     name: "player",
     props: ['url', 'post', 'videos'],
-    mounted(){
-      this.getUrl()
-    },
     methods: {
       select(item) {
         this.$emit('changeUrl', item)
       },
-      getUrl() {
-        getRealUrl(this.url).then(res => {
-          console.log(res.data.url)
-          setTimeout(() => {
-            new Eplayer(this.$refs.eplayer, {
-              src: res.data.url,
-              themeColor: '#fe2c55'
-            })
-          }, 20)
-        })
-      },
+
       back() {
         this.$emit('back')
       }
     },
     watch: {
       url(){
-        this.getUrl()
+        getRealUrl(this.url).then(res => {
+          console.log(res.data.url)
+          new Eplayer(this.$refs.eplayer, {
+            src: res.data.url,
+            themeColor: '#fe2c55'
+          })
+        })
       }
     },
     components: {
       VideoList
     }
-
   }
 </script>
 
