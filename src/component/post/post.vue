@@ -126,6 +126,17 @@
     right: 0
     z-index: 100
     font-size: 14px
+    .content
+      padding: 10px
+      background $b-color
+
+    .content
+      p
+        a
+          color: #fff
+          font-weight bold
+        img
+          width: 100%
 
   .wrap
     position: fixed
@@ -168,18 +179,6 @@
     height: 30px
     width: 30px
     margin-right: 10px
-
-  .content
-    padding: 10px
-    background $b-color
-
-  .content
-    p
-      a
-        color: #fff
-        font-weight bold
-      img
-        width: 100%
 
   blockquote
     background: $bg-color

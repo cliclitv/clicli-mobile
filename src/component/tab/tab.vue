@@ -2,7 +2,7 @@
     <div class="tab">
         <ul class="status">
             <router-link to="/home">
-                <li>和谐区</li>
+                <li>C哩</li>
             </router-link>
         </ul>
     </div>
