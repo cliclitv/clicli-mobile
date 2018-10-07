@@ -37,6 +37,7 @@
     "better-scroll": "^1.12.6",
     "blueimp-md5": "^2.10.0",
     "eplayer": "^0.3.0",
+    "flv.js": "^1.4.2",
     "marked": "^0.4.0",
     "vue": "^2.5.2",
     "vue-lazyload": "^1.2.6",

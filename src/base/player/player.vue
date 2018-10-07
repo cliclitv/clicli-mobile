@@ -74,6 +74,7 @@
     .ep
       height 225px
       width 100%
+      position relative
     .info
       padding: 10px
       .title
